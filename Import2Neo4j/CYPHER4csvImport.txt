@@ -1,0 +1,41 @@
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:///event.csv" AS line
+CREATE (event:EVENT{e_id:line.e_id, time:line.time, text:line.text})
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:///location.csv" AS line
+CREATE (location:LOCATION{l_id:line.l_id, locationName:line.location})
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:///patient.csv" AS line
+CREATE (patient:PATIENT{p_id:line.p_id, patientName:line.name, age:line.age,gender:line.gender})
+
+LOAD CSV WITH HEADERS FROM "file:///topic.csv" AS line
+CREATE (topic:TOPIC{t_id:line.t_id, topicName:line.topic})
+
+
+
+
+
+
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS FROM "file:///event-location.csv" AS line
+MATCH (FROM:EVENT{e_id:line.e_id}), (TO:LOCATION{l_id:line.l_id})
+MERGE (FROM)-[EVENT_LOCATION: EVENT_LOCATION{type:"happenIn"}]->(TO)
+
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS FROM "file:///event-topic.csv" AS line
+MATCH (FROM:EVENT{e_id:line.e_id}), (TO:TOPIC{t_id:line.t_id})
+MERGE (FROM)-[EVENT_TOPIC: EVENT_TOPIC{type:"belong2"}]->(TO)
+
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS FROM "file:///patient-event.csv" AS line
+MATCH (FROM:PATIENT{p_id:line.p_id}), (TO:EVENT{e_id:line.e_id})
+MERGE (FROM)-[PATIENT_EVENT: PATIENT_EVENT{type:"hasEvent"}]->(TO)
+
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS FROM "file:///patient-location.csv" AS line
+MATCH (FROM:PATIENT{p_id:line.p_id}), (TO:LOCATION{l_id:line.l_id})
+MERGE (FROM)-[PATIENT_LOCATION: PATIENT_LOCATION{type:"diagnosedIn"}]->(TO)
+
+

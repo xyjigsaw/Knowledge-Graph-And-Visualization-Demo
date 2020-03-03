@@ -1,0 +1,38 @@
+<head>
+  <style> body { margin: 0; } </style>
+  <script src="3d-graph.js"></script>
+  <script src="neo4j-color-min.js"></script>
+</head>
+
+<body>
+  <div id="3d-graph"></div>
+
+  <script>
+    const elem = document.getElementById('3d-graph');
+    const driver = neo4j.v1.driver("bolt://localhost", neo4j.v1.auth.basic("neo4j", "123456"),{encrypted: false});
+	const session = driver.session();
+	const start = new Date()
+    session
+      .run('MATCH (n)-->(m) RETURN { id: id(n), label:head(labels(n)), caption:n.patientName } as source, { id: id(m), label:head(labels(m)), caption:m.patientName } as target LIMIT $limit', {limit: 20000})
+      .then(function (result) {
+        const nodes = {}
+        const links = result.records.map(r => { 
+	       var source = r.get('source');source.id = source.id.toNumber();
+           nodes[source.id] = source;
+	       var target = r.get('target');target.id = target.id.toNumber();
+           nodes[target.id] = target;
+	       return {source:source.id,target:target.id}
+	    });
+        session.close();
+        const gData = { nodes: Object.values(nodes), links: links}
+        const Graph = ForceGraph3D()(elem)
+                      .graphData(gData)
+                      .nodeAutoColorBy('label')
+                      .nodeLabel(node => `${node.label}: ${node.caption}`)
+                      .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  </script>
+</body>
