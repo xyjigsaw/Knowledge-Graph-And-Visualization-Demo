@@ -17,7 +17,7 @@ KG data csv files are in folder Import2Neo4j.
 
 ---
 
-## Folder Import2Neo4j
+## Folder: Import2Neo4j
 
 1. Put all CSV files into the Import folder shown below
 
@@ -34,7 +34,7 @@ KG data csv files are in folder Import2Neo4j.
 ---
 
 
-## Folder Neo4j-3D 
+## Folder: Neo4j-3D 
 
 It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-graph), which can run directly.
 
@@ -54,7 +54,7 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 ---
 
 
-## Folder KG-Search
+## Folder: KG-Search
 
 #### Requirements
 - Django
