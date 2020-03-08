@@ -72,9 +72,9 @@ python manage.py runserver
 Address：localhost: 8000
 
 ### Search
-**Support 3 keywords (disorderly) at most**
+**Support 3 disorder keywords (space seperated) at most**
 
-**Example**
+**Examples**
 
 - 1 keyword
   - 江苏苏州
