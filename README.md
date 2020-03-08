@@ -56,6 +56,8 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 ## Folder: KG-Search
 
+**Provide KG graph and triple lists**
+
 #### Requirements
 - Django
 - py2neo
@@ -71,7 +73,9 @@ Address：localhost: 8000
 
 #### Search
 **Support 3 keywords (disorderly) at most**
+
 **Example**
+
 - 1 keyword
   - 江苏苏州
   - 确诊
