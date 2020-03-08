@@ -1,0 +1,213 @@
+{% block body %}
+<link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+<title>KG-SEARCH</title>
+<div class="container">
+    <div class="row">
+
+    <div class = "col-md-12">
+        <div class="panel panel-default ">
+            <header class = "panel-heading">
+                地点搜索，精确到县，支持模糊查询
+            </header>
+            <div class = "panel-body">
+                <form method = "get" id = 'searchEntityForm'>
+                    <div >
+                        <input type="text" id = "user_text" name = "user_text" class="form-control" placeholder=" Search Location" aria-describedby="basic-addon1" style="height: 40px; margin: 6px ; border-radius: 3px">
+                        <span class="layui-btn layui-btn-normal" type="button" id="relationSearchButton" onclick="document.getElementById('searchEntityForm').submit();">Go</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <p>
+        <div class = "col-md-12">
+            {% if nothing %}
+                <div class="panel panel-default">
+                    <header class ="panel-heading">
+                        <div class = "panel-body">
+                            <h2>Sorry, Not Found In Database.</h2>
+                        </div>
+                    </header>
+                </div>
+            {% endif %}
+        </div>
+    </p>
+    <!--relation start-->
+    {% if entity_relation %}
+        <div class = "col-md-12">
+            <div class="panel panel-default ">
+                <header class="panel-heading">
+                </header>
+                <div class = "panel-body ">
+                    <div id="graph" style="width: 90%;height:600px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="table-div" style="margin: 10px"><table class="layui-hide" id="graph-table"></table></div>
+
+    {% endif %}
+    </div>
+    </div>
+    {% if entity_relation %}
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/echarts.js"></script>
+    <script src="../static/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        const nothing = [{{nothing|safe}}];
+        const entity_relation = [{{entity_relation|safe}}][0];
+        console.log(entity_relation);
+        const format_triple = [];
+        console.log(entity_relation);
+        let categories = [{name: 'Location'}, {name: 'Event'}, {name: 'Patient'}];
+        let data = [];
+        let links = [];
+        if(0 === nothing.length){
+            let node = {};
+            let relation = {};
+            let url = decodeURI(location.search);
+            let str = "";
+            if(url.indexOf("?") !== -1){
+                str = url.split("=")[1];
+            }
+            // Main Node
+            let id = '0';
+            node['name'] = str.replace('+', ' ');
+            node['draggable'] = true;
+            node['category'] = 0;
+            node['id'] = id;
+            node['symbolSize'] = 70;
+            data.push(node);
+            for(let i = 0; i < entity_relation.length; i++){
+                let triple = {};
+                triple['relation'] = entity_relation[i]['rel']['type'];
+                node = {};
+                node['draggable'] = true;
+                relation = {};
+                relation['value'] = entity_relation[i]['rel']['type'];
+                relation['symbolSize'] = 20;
+                if(entity_relation[i]['rel']['type'] === 'happenIn'){
+                    relation['category'] = node['category'] = 1 ;
+                    node['name'] = entity_relation[i]['n2']['text'];
+                    node['value'] = 0;
+                    node['symbolSize'] = 50;
+                    triple['target'] = entity_relation[i]['n1']['locationName'];
+                    triple['source'] = entity_relation[i]['n2']['time'] + ' ' + entity_relation[i]['n2']['text'];
+                } else if(entity_relation[i]['rel']['type'] === 'diagnosedIn'){
+                    relation['category'] = node['category'] = 2;
+                    node['name'] = entity_relation[i]['n2']['gender'] + ' ' + entity_relation[i]['n2']['age'];
+                    node['value'] = 0;
+                    node['symbolSize'] = 55;
+                    triple['target'] = entity_relation[i]['n1']['locationName'];
+                    triple['source'] = entity_relation[i]['n2']['gender'] + ' ' + entity_relation[i]['n2']['age'];
+                }
+                id = i + 1;
+                node['id'] = id.toString();
+                data.push(node);
+                relation['source'] = 0;
+                relation['target'] = node['id'];
+                links.push(relation);
+                format_triple.push(triple);
+            }
+        }
+        let myChart = echarts.init(document.getElementById('graph'));
+        option = {
+            color: [
+                "#2ec7c9",
+        "#b6a2de",
+        "#5ab1ef",
+        "#ffb980",
+        "#d87a80",
+        "#8d98b3",
+        "#e5cf0d",
+        "#97b552",
+        "#95706d",
+        "#dc69aa",
+        "#07a2a4",
+        "#9a7fd1",
+        "#588dd5",
+        "#f5994e",
+        "#c05050",
+        "#59678c",
+        "#c9ab00",
+        "#7eb00a",
+        "#6f5553",
+        "#c14089"
+            ],
+            tooltip: {},
+            legend: [{
+                x: 'center',
+                y: 'top',
+                orient:'horizontal',
+                data: categories.map(function (a) {
+                    return a.name;
+                }),
+                selected: {
+                    'Paper': false,
+                    'Affiliation': false,
+                }
+            }],
+            zoom: 2.0,
+            animation: true,
+            series : [
+                {
+                    type: 'graph',
+                    layout: 'force',
+                    data: data,
+                    links: links,
+                    categories: categories,
+                    roam: true,
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {
+                                fontSize: 12,
+                            },
+                        }
+                    },
+                    edgeLabel:{
+                        normal: {
+                            show: true,
+                            textStyle: {
+                                fontSize: 12
+                            },
+                            formatter: "{c}"
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            opacity: 0.6,
+                            width: 1.3,
+                            curveness: 0,
+                            color:"#262626"
+                        }
+                    },
+                    force: {
+                        repulsion: 600
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+        <script>
+layui.use('table', function(){
+  var table = layui.table;
+
+  //展示已知数据
+  table.render({
+    elem: '#graph-table'
+    ,cols: [[ //标题栏
+      {field: 'source', title: 'source', width: 400}
+      ,{field: 'relation', title: 'relation', width: 300}
+      ,{field: 'target', title: 'target', minWidth: 200}
+    ]]
+    ,data: format_triple
+    ,page: true //是否显示分页
+    ,limits: [5, 7, 10]
+    ,limit: 5 //每页默认显示的数量
+    ,even: true
+  });
+});
+    </script>
+{% endif %}
+{% endblock %}

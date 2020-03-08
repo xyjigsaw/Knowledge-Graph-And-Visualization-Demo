@@ -1,0 +1,37 @@
+1个关键词
+location：某一location有哪些patient确诊 DONE
+MATCH (n1)<-[rel]-(n2:PATIENT) WHERE n1.locationName=~'.*xxx.*' RETURN n1, rel, n2 LIMIT 25;
+
+location：某一location发生了哪些event DONE
+MATCH (n1)<-[rel]-(n2:EVENT) WHERE n1.locationName=~'.*xxx.*' RETURN n1, rel, n2 LIMIT 25;
+
+
+topic：某一topic包含了哪些事件（使用下拉框）DONE
+MATCH (n1:EVENT)-[rel:EVENT_TOPIC]->(n2:TOPIC) WHERE n2.topicName = '隔离治疗' RETURN n1, rel, n2 LIMIT 25;
+
+patient.name: DONE
+MATCH (n{patientName:'xxx'})return n;
+
+
+
+2个关键词
+location和topic：某一location某一topic下存在的具体event DONE
+MATCH (n1)<-[rel]-(n2:EVENT) WHERE n1.locationName=~'.*xxx.*' WITH n1, rel, n2 MATCH (n3)<-[rel2]-(n2:EVENT) WHERE n3.topicName=~'.*yyy.*' RETURN n1, rel, n2 LIMIT 25;
+
+location和gender：某一location有多少某一gender的患者 DONE
+MATCH (n1)<-[rel]-(n2:PATIENT) WHERE n1.locationName=~'.*xxx.*' and n2.gender='女' RETURN n1, rel, n2 LIMIT 25;
+
+location和time：某一location某一time下存在的具体event DONE
+MATCH (n1)<-[rel]-(n2:EVENT) WHERE n1.locationName=~'.*xxx.*' and n2.time = '2月2日' RETURN n1, rel, n2 LIMIT 25;
+
+location和time：某一location某一time下存在的patient对应的event（）Done
+MATCH (n1)<-[rel]-(n2:EVENT) WHERE n1.locationName=~'.*江苏.*' and n2.time = '2月2日' WITH n1, rel, n2 MATCH (n3:PATIENT)-[rel2]->(n2) RETURN n1, rel, n2, rel2, n3 LIMIT 25;
+
+patient.name和time：某一name和time下存在的location和event Done
+MATCH (n1:PATIENT)-[rel]->(n2:EVENT) WHERE n1.patientName='王某' and n2.time='2月2日' WITH n1, rel, n2 MATCH (n2)-[rel2]-(n3:LOCATION) RETURN n1, rel, n2, rel2, n3;
+
+3个关键词
+location, time, topic：某一location某一time下某一topic有哪些patient（例如2月2日江苏省南京市有哪些确诊病人）DONE
+MATCH (nx)<-[rel0]-(ny:EVENT) WHERE nx.topicName=~'.*确诊.*' and ny.time='2月2日' WITH ny MATCH (n3)<-[rel2]-(ny) WHERE n3.locationName=~'.*江苏.*' WITH ny, n3 MATCH (n2:PATIENT)-[rel3]->(ny) WITH n2 MATCH (n1:LOCATION)<-[rel]-(n2) RETURN n1, rel, n2 LIMIT 20;
+
+
