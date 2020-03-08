@@ -61,6 +61,7 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 - py2neo
 - neo4j
 - cpca
+- Jieba
 
 #### Run
 ```
@@ -70,6 +71,5 @@ Address：localhost:8000
 
 #### Preview
 
-![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-Search1.png)
-![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-Search2.png)
+![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
 
