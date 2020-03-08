@@ -67,7 +67,23 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 ```
 python manage.py runserver
 ```
-Address：localhost:8000
+Address：localhost: 8000
+
+#### Search
+**Support 3 keywords (disorderly) at most**
+**Example**
+- 1 keyword
+  - 江苏苏州
+  - 确诊
+  - 王某
+- 2 keywords
+  - 隔离 苏州
+  - 苏州 男性
+  - 苏州 2月2日
+  - 2月2日 王某
+- 3 keywords
+  - 2月2日 苏州 确诊 
+
 
 #### Preview
 
