@@ -38,12 +38,12 @@ KG data (COVID-2019 traces data from tencent) csv files are in folder Import2Neo
 
 It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-graph), which can run directly.
 
-#### Preview
+### Preview
 
 ![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-3D-1.png)
 ![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-3D-2.png)
 
-#### index.html Setting
+### index.html Setting
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/ncp-3d-graph202003031559.png)
 
 1. Configure the server address (no port number required), Neo4j username, and password in the first red box shown above.
@@ -58,20 +58,20 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 **Provide KG graph and triple lists**
 
-#### Requirements
+### Requirements
 - Django
 - py2neo
 - neo4j
 - cpca
 - Jieba
 
-#### Run
+### Run
 ```
 python manage.py runserver
 ```
 Address：localhost: 8000
 
-#### Search
+### Search
 **Support 3 keywords (disorderly) at most**
 
 **Example**
@@ -89,7 +89,7 @@ Address：localhost: 8000
   - 2月2日 苏州 确诊 
 
 
-#### Preview
+### Preview
 
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
 
