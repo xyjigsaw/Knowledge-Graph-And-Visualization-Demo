@@ -57,11 +57,11 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 **Provide KG graph and triple lists**
 
 ### Requirements
-- Django
+- django
 - py2neo
 - neo4j
 - cpca
-- Jieba
+- jieba
 
 ### Run
 ```
