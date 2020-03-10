@@ -92,4 +92,5 @@ Address：localhost: 8000
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
 
 ## More
-[NCP-AceMap](ncp.acemap.info)
+[NCP-Acemap](http://ncp.acemap.info)
+[Acemap](https://www.acemap.info/)
