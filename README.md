@@ -108,7 +108,7 @@ Address: 127.0.0.1:5000
 ```
 python manage.py runserver
 ```
-Address：localhost: 8000
+Address: 127.0.0.1:8000
 
 ---
 
