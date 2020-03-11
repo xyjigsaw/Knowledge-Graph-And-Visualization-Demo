@@ -38,7 +38,6 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 ### Preview
 
-![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-3D-1.png)
 ![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-3D-2.png)
 
 ### index.html Setting
