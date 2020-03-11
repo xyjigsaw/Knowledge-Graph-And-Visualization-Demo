@@ -44,9 +44,8 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/ncp-3d-graph202003031559.png)
 
 1. Configure the server address (no port number required), Neo4j username, and password in the first red box shown above.
-2. The second box is the CYPHER statement, which limits the return number to 20000. The return value is as follows, and the search box can be added to HTML later.
+2. The second box is the CYPHER statement, which limits the return number to 20000. The return value is json, and the search box can be added to HTML later.
 
-![](https://gitee.com/omegaxyz/img/raw/master/upload/CYPHER-RETURN-3D-GRAPH202003031551.png)
 
 ---
 
@@ -55,10 +54,10 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 - **Provide KG graph and triple lists**
 
-- The front-end code and back-end code **are** separated.
+- The front-end code and back-end code **have been** separated.
 
 ### Requirements
-- django
+- flask
 - py2neo
 - neo4j
 - cpca
@@ -92,6 +91,8 @@ Address: 127.0.0.1:5000
 
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
 
+---
+
 
 ## Folder: KG-Search-Django
 
@@ -109,7 +110,7 @@ python manage.py runserver
 ```
 Address：localhost: 8000
 
-
+---
 
 
 ## More
