@@ -86,6 +86,14 @@ Address: 127.0.0.1:5000
 - 3 keywords
   - 2月2日 苏州 确诊 
 
+### JSON API
+
+127.0.0.1:5000/api/{keywords}
+
+Example:
+
+- 127.0.0.1:5000/api/2月2日 苏州 确诊
+
 
 ### Preview
 
