@@ -51,9 +51,11 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 ---
 
 
-## Folder: KG-Search
+## Folder: KG-Search-Flask
 
-**Provide KG graph and triple lists**
+- **Provide KG graph and triple lists**
+
+- The front-end code and back-end code **are** separated.
 
 ### Requirements
 - django
@@ -64,9 +66,9 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 ### Run
 ```
-python manage.py runserver
+python app.py
 ```
-Address：localhost: 8000
+Address: 127.0.0.1:5000
 
 ### Search
 **Support 3 disorder keywords (space seperated) at most**
@@ -89,6 +91,26 @@ Address：localhost: 8000
 ### Preview
 
 ![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
+
+
+## Folder: KG-Search-Django
+
+- **Django Version for KG-Search**
+
+- **Provide KG graph and triple lists**
+
+- The front-end code and back-end code **are not** separated.
+
+- Flask version is recommended.
+
+### Run
+```
+python manage.py runserver
+```
+Address：localhost: 8000
+
+
+
 
 ## More
 [NCP-Acemap](http://ncp.acemap.info)
