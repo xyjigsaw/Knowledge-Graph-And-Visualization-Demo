@@ -8,7 +8,6 @@ import json
 import cpca
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "MgQxW43GV5FB7DG5ERVFinDtvVDxREVhNC"
 api = Api(app)
 app.config.update(RESTFUL_JSON=dict(ensure_ascii=False))  # API中文支持
 
@@ -127,26 +126,28 @@ def entity_analysis(entity):
 
 
 #  For Api
-def abort_if_todo_doesnt_exist(string):
-    abort(404, message="{} doesn't exist!".format(string))
 
 
 parser = reqparse.RequestParser()
-parser.add_argument('entity_json', type=str)
+parser.add_argument('string', type=str)
+
+
+class post_data(Resource):
+    def post(self):
+        args = parser.parse_args()
+        print('@', args)
+        entity_json = raw2json.analysis(json.loads(json.dumps(entity_analysis(args['string']), ensure_ascii=False)))
+        return entity_json
 
 
 class get_data(Resource):
-    def get(self, string):               # 根据string获取对应的value
-        # abort_if_todo_doesnt_exist(string)
+    def get(self, string):  # 根据string获取对应的value
         entity_json = raw2json.analysis(json.loads(json.dumps(entity_analysis(string), ensure_ascii=False)))
         return entity_json
 
-    def post(self, string):            # 判断string是否存在，并返回Tasks整个列表
-        # abort_if_todo_doesnt_exist(string)
-        return entity_json, 201
-
 
 api.add_resource(get_data, '/api/<string>')
+api.add_resource(post_data, '/api')
 
 
 if __name__ == '__main__':

@@ -88,11 +88,16 @@ Address: 127.0.0.1:5000
 
 ### JSON API
 
-127.0.0.1:5000/api/{keywords}
-
-Example:
+**GET EXAMPLE**
 
 - 127.0.0.1:5000/api/2月2日 苏州 确诊
+
+
+**POST EXAMPLE**
+
+- 127.0.0.1:5000/api
+
+body data: {"string": "2月2日 苏州 确诊"}
 
 
 ### Preview
