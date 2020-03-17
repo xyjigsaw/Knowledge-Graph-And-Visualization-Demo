@@ -56,6 +56,8 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 
 - The front-end code and back-end code **have been** separated.
 
+- [Demo](http://ncp.acemap.info/kg)
+
 ### Requirements
 - flask
 - py2neo
