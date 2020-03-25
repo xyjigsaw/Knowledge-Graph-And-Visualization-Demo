@@ -5,6 +5,7 @@ The code is guided by Deng and Dr.Fu from [Acemap](https://www.acemap.info/).
 
 There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data (COVID-2019 traces data from tencent) csv files are in folder Import2Neo4j.
 
+
 ---
 
 ## Neo4j Configuration
