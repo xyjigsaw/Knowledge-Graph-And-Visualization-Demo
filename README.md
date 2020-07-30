@@ -3,7 +3,7 @@
 
 The code is guided by Dr.Deng and Prof.Fu from [Acemap](https://www.acemap.info/).
 
-There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data (COVID-2019 traces data from tencent) csv files are in folder Import2Neo4j.
+There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data (COVID-19 traces data from tencent) csv files are in folder Import2Neo4j.
 
 ---
 
@@ -55,8 +55,6 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 - **Provide KG graph and triple lists**
 
 - The front-end code and back-end code **have been** separated.
-
-- [Demo@Acemap](http://ncp.acemap.info/kg)
 
 ### Requirements
 - flask
@@ -129,6 +127,5 @@ Address: 127.0.0.1:8000
 
 
 ## More
-[NCP-Acemap](http://dev.acemap.info)
 
 [Acemap](https://www.acemap.info/)
