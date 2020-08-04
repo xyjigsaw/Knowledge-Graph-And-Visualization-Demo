@@ -1,21 +1,32 @@
 # Knowledge-Graph-Visualization-Demo
+
+![](https://img.shields.io/badge/Status-Developed-brightgreen.svg)
+
 **Archive**
 
-The code is guided by Dr.Deng and Prof.Fu from [Acemap](https://www.acemap.info/).
+The code is guided by [Acemap](https://www.acemap.info/).
 
 There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data (COVID-19 traces data from tencent) csv files are in folder Import2Neo4j.
 
 ---
 
-## Neo4j Configuration
+## Folder List
+- [Import2Neo4j](Import2Neo4j): Import data to Neo4j
+- [Neo4j-3D](Neo4j-3D): Read data from Neo4j and use 3D visualization
+- [KG-Search-Flask](KG-Search-Flask): Flask platform for search
+- [KG-Search-Django](KG-Search-Django): Django platform for search
+
+---
+
+## Folder: Import2Neo4j
+
+### Neo4j Configuration
 
 - Database Name：COVID-19
 - Username：neo4j
 - Password：123456
 
----
-
-## Folder: Import2Neo4j
+### Steps
 
 1. Put all CSV files into the Import folder shown below
 
@@ -32,7 +43,7 @@ There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data
 ---
 
 
-## Folder: Neo4j-3D 
+## Folder: Neo4j-3D
 
 It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-graph), which can run directly.
 
