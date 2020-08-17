@@ -57,6 +57,9 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 1. Configure the server address (no port number required), Neo4j username, and password in the first red box shown above.
 2. The second box is the CYPHER statement, which limits the return number to 20000. The return value is json, and the search box can be added to HTML later.
 
+### Noted problem
+[issue2](https://github.com/xyjigsaw/Knowledge-Graph-And-Visualization-Demo/issues/2)
+
 
 ---
 
