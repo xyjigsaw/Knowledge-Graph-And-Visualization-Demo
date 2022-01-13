@@ -4,7 +4,7 @@
 
 **Archive**
 
-The code is guided by [Acemap](https://www.acemap.info/).
+Neo4j powered KG visulization
 
 There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data (COVID-19 traces data from tencent) csv files are in folder Import2Neo4j.
 
@@ -139,7 +139,3 @@ Address: 127.0.0.1:8000
 
 ---
 
-
-## More
-
-[Acemap](https://www.acemap.info/)
