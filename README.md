@@ -30,7 +30,7 @@ There are 2D-Search and 3D-Graph-View for knowledge graph visualization. KG data
 
 1. Put all CSV files into the Import folder shown below
 
-![](https://gitee.com/omegaxyz/img/raw/master/upload/Neo4j-Import202003031535.png)
+![](https://github.com/xyjigsaw/image/blob/master/upload/Neo4j-Import202003031535.png)
 
 
 2. CYPHER4csvImport: Input the eight statements on by one in this file on the Neo4j console
@@ -52,7 +52,7 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 ![](https://github.com/xyjigsaw/Knowledge-Graph-Visualization-Demo/blob/master/KG-3D-2.png)
 
 ### index.html Setting
-![](https://gitee.com/omegaxyz/img/raw/master/upload/ncp-3d-graph202003031559.png)
+![](https://github.com/xyjigsaw/image/blob/master/upload/ncp-3d-graph202003031559.png)
 
 1. Configure the server address (no port number required), Neo4j username, and password in the first red box shown above.
 2. The second box is the CYPHER statement, which limits the return number to 20000. The return value is json, and the search box can be added to HTML later.
@@ -116,7 +116,7 @@ body data: {"string": "2月2日 苏州 确诊"}
 
 ### Preview
 
-![](https://gitee.com/omegaxyz/img/raw/master/upload/KG-Search3202003081542.png)
+![](https://github.com/xyjigsaw/image/blob/master/upload/KG-Search3202003081542.png)
 
 ---
 
