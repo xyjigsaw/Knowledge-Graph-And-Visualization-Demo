@@ -78,7 +78,11 @@ It is based on js using [3d-force-graph](https://github.com/vasturiano/3d-force-
 - jieba
 
 ### Run
+
 ```
+cd KG-Search-Flask
+unzip static.zip
+
 python app.py
 ```
 Address: 127.0.0.1:5000
@@ -133,6 +137,10 @@ body data: {"string": "2月2日 苏州 确诊"}
 
 ### Run
 ```
+cd KG-Search-Django/web
+unzip static.zip
+cd ..
+
 python manage.py runserver
 ```
 Address: 127.0.0.1:8000
